@@ -20,6 +20,8 @@ public class PetSaveDTO {
     private Long age;
     private Long weight;
     private String feature;
+    private String region;
+    private String gender;
 
     public Pet toEntity(User userId) {
         return Pet.builder()
@@ -31,6 +33,8 @@ public class PetSaveDTO {
                 .age(age)
                 .weight(weight)
                 .feature(feature)
+                .region(region)
+                .gender(gender)
                 .build();
     }
 }
