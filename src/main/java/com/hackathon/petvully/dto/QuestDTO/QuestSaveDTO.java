@@ -12,6 +12,7 @@ public class QuestSaveDTO {
     private boolean food;
     private boolean walk;
     private boolean shower;
+    private boolean touch;
 
     public Quest toEntity(User userId) {
         return Quest.builder()
@@ -20,6 +21,7 @@ public class QuestSaveDTO {
                 .food(food)
                 .walk(walk)
                 .shower(shower)
+                .touch(touch)
                 .build();
     }
 }

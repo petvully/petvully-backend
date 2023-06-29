@@ -73,6 +73,18 @@ public class QuestController {
         }
     }
 
+    @Operation(summary = "", description = "쓰다듬기 API")
+    @PostMapping("/give-touch")
+    public ResponseEntity<User> giveTouch(@RequestBody QuestGiveDTO questGiveDTO) {
+        User user = userRepository.findById(questGiveDTO.getUserId()).orElseThrow();
+        if(questService.giveTouch(questGiveDTO.getUserId())) {
+            return ResponseEntity.ok(user);
+        }
+        else {
+            return ResponseEntity.status(400).body(user);
+        }
+    }
+
     @Operation(summary = "", description = "Quest 정보 API")
     @GetMapping("/info/{user_id}")
     public List<Quest> questInfo(@PathVariable Long user_id) {

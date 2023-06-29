@@ -130,6 +130,33 @@ public class QuestService {
         return true;
     }
 
+    public boolean giveTouch(Long userId) {
+        User user = userRepository.findById(userId).orElseThrow();
+        Quest quest = questRepository.findByQuestDate(currentDate);
+        if (quest == null) {
+            QuestSaveDTO questSaveDTO = new QuestSaveDTO();
+            questRepository.save(questSaveDTO.toEntity(user));
+            Quest touchquest = questRepository.findByQuestDate(currentDate);
+            touchquest.setTouch(true);
+            user.setExp(user.getExp()+20);
+            if (user.getExp() == 100) {
+                user.setLevel(user.getLevel()+1);
+                user.setExp(0L);
+            }
+            return true;
+        }
+        if (quest.isTouch()) {
+            return false;
+        }
+        quest.setTouch(true);
+        user.setExp(user.getExp()+20);
+        if (user.getExp() == 100) {
+            user.setLevel(user.getLevel()+1);
+            user.setExp(0L);
+        }
+        return true;
+    }
+
     public List<Quest> info(Long user_id) {
         Optional<User> user = userRepository.findById(user_id);
         return questRepository.findByUserId(user);
