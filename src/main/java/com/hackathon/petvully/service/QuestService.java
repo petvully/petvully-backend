@@ -34,6 +34,7 @@ public class QuestService {
             if (user.getExp() == 100) {
                 user.setLevel(user.getLevel()+1);
                 user.setExp(0L);
+                user.setCoin(user.getCoin()+10);
             }
             return true;
         }
@@ -45,6 +46,7 @@ public class QuestService {
         if (user.getExp() == 100) {
             user.setLevel(user.getLevel()+1);
             user.setExp(0L);
+            user.setCoin(user.getCoin()+10);
         }
         return true;
     }
@@ -61,6 +63,7 @@ public class QuestService {
             if (user.getExp() == 100) {
                 user.setLevel(user.getLevel()+1);
                 user.setExp(0L);
+                user.setCoin(user.getCoin()+10);
             }
             return true;
         }
@@ -72,6 +75,7 @@ public class QuestService {
         if (user.getExp() == 100) {
             user.setLevel(user.getLevel()+1);
             user.setExp(0L);
+            user.setCoin(user.getCoin()+10);
         }
         return true;
     }
@@ -88,6 +92,7 @@ public class QuestService {
             if (user.getExp() == 100) {
                 user.setLevel(user.getLevel()+1);
                 user.setExp(0L);
+                user.setCoin(user.getCoin()+10);
             }
             return true;
         }
@@ -99,6 +104,7 @@ public class QuestService {
         if (user.getExp() == 100) {
             user.setLevel(user.getLevel()+1);
             user.setExp(0L);
+            user.setCoin(user.getCoin()+10);
         }
         return true;
     }
@@ -115,6 +121,7 @@ public class QuestService {
             if (user.getExp() == 100) {
                 user.setLevel(user.getLevel()+1);
                 user.setExp(0L);
+                user.setCoin(user.getCoin()+10);
             }
             return true;
         }
@@ -126,6 +133,7 @@ public class QuestService {
         if (user.getExp() == 100) {
             user.setLevel(user.getLevel()+1);
             user.setExp(0L);
+            user.setCoin(user.getCoin()+10);
         }
         return true;
     }
@@ -142,6 +150,7 @@ public class QuestService {
             if (user.getExp() == 100) {
                 user.setLevel(user.getLevel()+1);
                 user.setExp(0L);
+                user.setCoin(user.getCoin()+10);
             }
             return true;
         }
@@ -153,6 +162,7 @@ public class QuestService {
         if (user.getExp() == 100) {
             user.setLevel(user.getLevel()+1);
             user.setExp(0L);
+            user.setCoin(user.getCoin()+10);
         }
         return true;
     }
