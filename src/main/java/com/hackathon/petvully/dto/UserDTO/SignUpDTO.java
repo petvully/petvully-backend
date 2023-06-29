@@ -13,10 +13,6 @@ public class SignUpDTO {
     private String nickname;
     private Long level;
     private Long heart;
-    private boolean water;
-    private boolean food;
-    private boolean walk;
-    private boolean shower;
 
     public User toEntity() {
         return User.builder()
@@ -26,11 +22,6 @@ public class SignUpDTO {
                 .nickname(nickname)
                 .level(level)
                 .heart(heart)
-                .water(water)
-                .food(food)
-                .walk(walk)
-                .shower(shower)
                 .build();
     }
-
 }
