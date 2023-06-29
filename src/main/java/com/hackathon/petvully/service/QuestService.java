@@ -30,6 +30,8 @@ public class QuestService {
             waterquest.setWater(true);
             return true;
         }
+        Quest waterquest = questRepository.findByUserId(user);
+        waterquest.setWater(true);
         return true;
     }
 }
