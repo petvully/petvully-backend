@@ -32,8 +32,10 @@ public class QuestService {
             waterquest.setWater(true);
             return true;
         }
-        Quest waterquest = questRepository.findByQuestDate(currentDate);
-        waterquest.setWater(true);
+        if (quest.isWater()) {
+            return false;
+        }
+        quest.setWater(true);
         return true;
     }
 
@@ -47,8 +49,10 @@ public class QuestService {
             foodquest.setFood(true);
             return true;
         }
-        Quest foodquest = questRepository.findByQuestDate(currentDate);
-        foodquest.setFood(true);
+        if (quest.isFood()) {
+            return false;
+        }
+        quest.setFood(true);
         return true;
     }
 
@@ -62,8 +66,10 @@ public class QuestService {
             walkquest.setWalk(true);
             return true;
         }
-        Quest walkquest = questRepository.findByQuestDate(currentDate);
-        walkquest.setWalk(true);
+        if (quest.isWalk()) {
+            return false;
+        }
+        quest.setWalk(true);
         return true;
     }
 
@@ -77,8 +83,10 @@ public class QuestService {
             showerquest.setShower(true);
             return true;
         }
-        Quest showerquest = questRepository.findByQuestDate(currentDate);
-        showerquest.setShower(true);
+        if (quest.isShower()) {
+            return false;
+        }
+        quest.setShower(true);
         return true;
     }
 

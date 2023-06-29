@@ -27,7 +27,7 @@ public class QuestController {
             return ResponseEntity.ok("물주기 완료");
         }
         else {
-            return ResponseEntity.status(400).body("동물에게 관심을 주세요");
+            return ResponseEntity.status(400).body("같은 쿼스트는 하루에 한번만 가능합니다.");
         }
     }
 
@@ -38,7 +38,7 @@ public class QuestController {
             return ResponseEntity.ok("밥주기 완료");
         }
         else {
-            return ResponseEntity.status(400).body("동물에게 관심을 주세요");
+            return ResponseEntity.status(400).body("같은 쿼스트는 하루에 한번만 가능합니다.");
         }
     }
 
@@ -49,7 +49,7 @@ public class QuestController {
             return ResponseEntity.ok("산책하기 완료");
         }
         else {
-            return ResponseEntity.status(400).body("동물에게 관심을 주세요");
+            return ResponseEntity.status(400).body("같은 쿼스트는 하루에 한번만 가능합니다.");
         }
     }
 
@@ -60,7 +60,7 @@ public class QuestController {
             return ResponseEntity.ok("씻기기 완료");
         }
         else {
-            return ResponseEntity.status(400).body("동물에게 관심을 주세요");
+            return ResponseEntity.status(400).body("같은 쿼스트는 하루에 한번만 가능합니다.");
         }
     }
 
