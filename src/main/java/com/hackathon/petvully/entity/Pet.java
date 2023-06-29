@@ -1,14 +1,16 @@
 package com.hackathon.petvully.entity;
 
+import com.hackathon.petvully.dto.PetDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "pet")
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -31,4 +33,15 @@ public class Pet {
 
     @Column(nullable = false)
     private String character;
+
+    public PetDTO toDTO() {
+        return PetDTO.builder()
+                .id(this.getId())
+                .image(this.getImage())
+                .shelter(this.getShelter())
+                .kind(this.getKind())
+                .age(this.getAge())
+                .character(this.getCharacter())
+                .build();
+    }
 }

@@ -3,6 +3,7 @@ package com.hackathon.petvully.controller;
 import com.hackathon.petvully.dto.UserDTO.EmailDupDTO;
 import com.hackathon.petvully.dto.UserDTO.LoginDTO;
 import com.hackathon.petvully.dto.UserDTO.SignUpDTO;
+import com.hackathon.petvully.dto.UserDTO.UserUpdateDTO;
 import com.hackathon.petvully.entity.User;
 import com.hackathon.petvully.repository.UserRepository;
 import com.hackathon.petvully.service.UserService;
@@ -44,17 +45,25 @@ public class UserController {
     }
     @Operation(summary = "", description = "로그인 API")
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginDTO loginDTO) {
+    public ResponseEntity<?> login(@RequestBody LoginDTO loginDTO) {
         if(userService.isEmailDuplicate(loginDTO.getEmail())) {
             if(userService.comparePassword(loginDTO.getEmail(),loginDTO.getPassword())) {
                 User user = userRepository.findByEmail(loginDTO.getEmail());
                 if(user != null) {
-                    return ResponseEntity.ok("로그인 완료");
+                    return ResponseEntity.ok(user);
                 }
                 return ResponseEntity.status(400).body("사용자를 찾을 수 없습니다.");
             }
             return ResponseEntity.status(400).body("비밀번호가 틀렸습니다.");
         }
         return ResponseEntity.status(400).body("사용자를 찾을 수 없습니다.");
+    }
+
+    @Operation(summary = "", description = "유저 정보 수정 API")
+    @PutMapping("/update")
+    public User updateInfo(@RequestBody UserUpdateDTO userUpdateDTO) {
+        User user = userRepository.findByEmail(userUpdateDTO.getEmail());
+        userService.updateUserInfo(user, userUpdateDTO);
+        return user;
     }
 }

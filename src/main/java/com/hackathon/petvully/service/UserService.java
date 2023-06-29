@@ -1,6 +1,7 @@
 package com.hackathon.petvully.service;
 
 import com.hackathon.petvully.dto.UserDTO.SignUpDTO;
+import com.hackathon.petvully.dto.UserDTO.UserUpdateDTO;
 import com.hackathon.petvully.entity.User;
 import com.hackathon.petvully.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -29,5 +30,10 @@ public class UserService {
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         return passwordEncoder.matches(password, findUser.getPassword());
+    }
+
+    public User updateUserInfo(User user, UserUpdateDTO userUpdateDTO) {
+        user.update(userUpdateDTO);
+        return user;
     }
 }
