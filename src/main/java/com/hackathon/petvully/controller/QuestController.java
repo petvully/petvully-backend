@@ -49,4 +49,15 @@ public class QuestController {
             return ResponseEntity.status(400).body("동물에게 관심을 주세요");
         }
     }
+
+    @Operation(summary = "", description = "씻기기 API")
+    @PostMapping("/give-shower")
+    public ResponseEntity<String> giveShower(@RequestBody QuestGiveDTO questGiveDTO) {
+        if(questService.giveShower(questGiveDTO.getUserId())) {
+            return ResponseEntity.ok("씻기기 완료");
+        }
+        else {
+            return ResponseEntity.status(400).body("동물에게 관심을 주세요");
+        }
+    }
 }

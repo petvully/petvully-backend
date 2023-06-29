@@ -62,4 +62,19 @@ public class QuestService {
         walkquest.setWalk(true);
         return true;
     }
+
+    public boolean giveShower(Long userId) {
+        Optional<User> user = userRepository.findById(userId);
+        Quest quest = questRepository.findByUserId(user);
+        if (quest == null) {
+            QuestSaveDTO questSaveDTO = new QuestSaveDTO();
+            questRepository.save(questSaveDTO.toEntity(user.orElseThrow()));
+            Quest showerquest = questRepository.findByUserId(user);
+            showerquest.setShower(true);
+            return true;
+        }
+        Quest showerquest = questRepository.findByUserId(user);
+        showerquest.setShower(true);
+        return true;
+    }
 }
