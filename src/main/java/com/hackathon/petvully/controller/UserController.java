@@ -66,4 +66,11 @@ public class UserController {
         userService.updateUserInfo(user, userUpdateDTO);
         return user;
     }
+
+    @Operation(summary = "", description = "유저 정보 수정 API")
+    @GetMapping("/info/{user_id}")
+    public User Info(@PathVariable Long user_id) {
+        User user = userRepository.findById(user_id).orElseThrow();
+        return user;
+    }
 }
