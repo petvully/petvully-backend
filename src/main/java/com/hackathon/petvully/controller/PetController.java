@@ -32,7 +32,7 @@ public class PetController {
     }
 
     @Operation(summary = "", description = "유기동물 삭제 API")
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity<String> delete(@RequestBody PetDTO petDTO) {
         Pet pet = petService.findById(petDTO.getId());
         petService.delete(pet);

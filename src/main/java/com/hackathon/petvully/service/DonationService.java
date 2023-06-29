@@ -25,8 +25,8 @@ public class DonationService {
         return donationRepository.findAllByUserId(id).stream().map(Donation::toDTO).collect(Collectors.toList());
     }
 
-    @Transactional
-    public List<DonationDTO> findAllByPetId(long id) {
-        return donationRepository.findAllByPetId(id).stream().map(Donation::toDTO).collect(Collectors.toList());
-    }
+//    @Transactional
+//    public List<DonationDTO> findAllByPetId(long id) {
+//        return donationRepository.findAllByPetId(id).stream().map(Donation::toDTO).collect(Collectors.toList());
+//    }
 }
