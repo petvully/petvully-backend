@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 public class UserController {
 
-    private String secretKey = "petvully";
-
     @Autowired
     private UserService userService;
 
