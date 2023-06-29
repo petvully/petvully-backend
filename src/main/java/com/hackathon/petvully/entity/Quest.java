@@ -8,7 +8,6 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "quest")
@@ -40,17 +39,21 @@ public class Quest {
     @Column(nullable = false)
     private boolean shower;
 
+    @Column(nullable = false)
+    private boolean touch;
+
     @PrePersist
     public void prePersist(){
         questDate = LocalDate.now();
     }
 
     @Builder
-    public Quest(User userId, boolean water, boolean food, boolean walk, boolean shower) {
+    public Quest(User userId, boolean water, boolean food, boolean walk, boolean shower, boolean touch) {
         this.userId = userId;
         this.water = water;
         this.food = food;
         this.walk = walk;
         this.shower = shower;
+        this.touch = touch;
     }
 }

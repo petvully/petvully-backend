@@ -13,7 +13,7 @@ public class SignUpDTO {
     private String nickname;
     private Long level;
     private Long exp;
-    private Long heart;
+    private Long coin;
 
     public User toEntity() {
         return User.builder()
@@ -23,7 +23,7 @@ public class SignUpDTO {
                 .nickname(nickname)
                 .level(level)
                 .exp(exp)
-                .heart(heart)
+                .coin(coin)
                 .build();
     }
 }

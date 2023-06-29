@@ -12,5 +12,5 @@ public class UserUpdateDTO {
     private String nickname;
     private Long level;
     private Long exp;
-    private Long heart;
+    private Long coin;
 }

@@ -12,7 +12,7 @@ public class UserDTO {
     private String phone;
     private String nickname;
     private Long level;
-    private Long heart;
+    private Long coin;
 
     public User toEntity() {
         return User.builder()
@@ -21,7 +21,7 @@ public class UserDTO {
                 .phone(phone)
                 .nickname(nickname)
                 .level(level)
-                .heart(heart)
+                .coin(coin)
                 .build();
     }
 }
