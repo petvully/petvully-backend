@@ -1,12 +1,15 @@
 package com.hackathon.petvully.controller;
 
 import com.hackathon.petvully.dto.QuestDTO.QuestGiveDTO;
+import com.hackathon.petvully.entity.Quest;
 import com.hackathon.petvully.service.QuestService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Tag(name = "quest", description = "퀘스트 API")
 @RestController
@@ -59,5 +62,11 @@ public class QuestController {
         else {
             return ResponseEntity.status(400).body("동물에게 관심을 주세요");
         }
+    }
+
+    @Operation(summary = "", description = "Quest 정보 API")
+    @GetMapping("/info/{user_id}")
+    public List<Quest> questInfo(@PathVariable Long user_id) {
+        return questService.info(user_id);
     }
 }
