@@ -27,7 +27,8 @@ public class PetService {
     public String create(PetSaveDTO petSaveDTO) {
         User user = userRepository.findById(petSaveDTO.getUserId()).orElseThrow();
         petRepository.save(petSaveDTO.toEntity(user));
-        return "생성";
+        user.setCoin(user.getCoin() - 5);
+        return "내 펫 입양 완료";
     }
 
     public List<Pet> info() {
