@@ -47,4 +47,19 @@ public class QuestService {
         foodquest.setFood(true);
         return true;
     }
+
+    public boolean giveWalk(Long userId) {
+        Optional<User> user = userRepository.findById(userId);
+        Quest quest = questRepository.findByUserId(user);
+        if (quest == null) {
+            QuestSaveDTO questSaveDTO = new QuestSaveDTO();
+            questRepository.save(questSaveDTO.toEntity(user.orElseThrow()));
+            Quest walkquest = questRepository.findByUserId(user);
+            walkquest.setWalk(true);
+            return true;
+        }
+        Quest walkquest = questRepository.findByUserId(user);
+        walkquest.setWalk(true);
+        return true;
+    }
 }
