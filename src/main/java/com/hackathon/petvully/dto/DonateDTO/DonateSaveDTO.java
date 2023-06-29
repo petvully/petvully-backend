@@ -12,6 +12,7 @@ public class DonateSaveDTO {
     private String product;
     private Long price;
     private String category;
+    private String shelter;
 
     public Donate toEntity(User userId) {
         return Donate.builder()
@@ -19,6 +20,7 @@ public class DonateSaveDTO {
                 .product(product)
                 .price(price)
                 .category(category)
+                .shelter(shelter)
                 .build();
     }
 }

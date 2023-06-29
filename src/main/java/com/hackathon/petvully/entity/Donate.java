@@ -36,6 +36,8 @@ public class Donate {
     @Column(nullable = false)
     private String category;
 
+    @Column(nullable = false)
+    private String shelter;
 
     @PrePersist
     public void prePersist(){
@@ -43,10 +45,11 @@ public class Donate {
     }
 
     @Builder
-    public Donate(User userId, String product, Long price, String category) {
+    public Donate(User userId, String product, Long price, String category, String shelter) {
         this.userId = userId;
         this.product = product;
         this.price = price;
         this.category = category;
+        this.shelter = shelter;
     }
 }

@@ -23,6 +23,7 @@ public class DonateService {
     public ResponseEntity<Donate> register(DonateSaveDTO donateSaveDTO) {
         User user = userRepository.findById(donateSaveDTO.getUserId()).orElseThrow();
         Donate donate = donateRepository.save(donateSaveDTO.toEntity(user));
+        user.setCoin(user.getCoin()-donateSaveDTO.getPrice());
         return ResponseEntity.ok(donate);
     }
 
