@@ -1,4 +1,4 @@
-package com.hackathon.petvully.dto;
+package com.hackathon.petvully.dto.PetDTO;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,8 +1,6 @@
 package com.hackathon.petvully.controller;
 
-import com.hackathon.petvully.dto.PetDTO;
-import com.hackathon.petvully.dto.UserDTO.LoginDTO;
-import com.hackathon.petvully.dto.UserDTO.UserDTO;
+import com.hackathon.petvully.dto.PetDTO.PetSaveDTO;
 import com.hackathon.petvully.entity.Pet;
 import com.hackathon.petvully.entity.User;
 import com.hackathon.petvully.repository.UserRepository;
@@ -13,44 +11,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @Tag(name = "pet", description = "유기동물 API")
 @RestController
-@RequestMapping("mypet")
+@RequestMapping("pets")
 @CrossOrigin(origins = "*")
 public class PetController {
     
     @Autowired
     private PetService petService;
 
-    @Autowired
-    private UserRepository userRepository;
-
     @Operation(summary = "", description = "유기동물 입양 API")
     @PostMapping("/adoption")
-    public ResponseEntity<String> create(@RequestBody PetDTO petDTO) {
-        petService.create(petDTO);
-        return ResponseEntity.ok("입양을 축하합니다!");
-    }
-    
-    @Operation(summary = "", description = "유기동물 조회 API")
-    @PostMapping("")
-    public Pet read(@RequestBody UserDTO UserDTO) {
-        User user = userRepository.findByEmail(UserDTO.getEmail());
-        return petService.findByUserId(user.getId());
+    public ResponseEntity<String> create(@RequestBody PetSaveDTO petSaveDTO) {
+        return ResponseEntity.ok(petService.create(petSaveDTO));
     }
 
-    @Operation(summary = "", description = "유기동물 갱신 API")
-    @PostMapping("/update")
-    public ResponseEntity<String> update(@RequestBody PetDTO petDTO) {
-        petService.update(petDTO);
-        return ResponseEntity.ok("입양을 축하합니다!");
+    @Operation(summary = "", description = "유기동물 전체 정보 조회 API")
+    @GetMapping("/info")
+    public ResponseEntity<List<Pet>> info() {
+        return ResponseEntity.ok(petService.info());
     }
 
-    @Operation(summary = "", description = "유기동물 삭제 API")
-    @DeleteMapping("/delete")
-    public ResponseEntity<String> delete(@RequestBody PetDTO petDTO) {
-        Pet pet = petService.findById(userRepository.findByEmail(petDTO.getEmail()).getId());
-        petService.delete(pet);
-        return ResponseEntity.ok("Delete Success!");
+    @Operation(summary = "", description = "유기동물 상세 정보 조회 API")
+    @GetMapping("/info/{pet_id}")
+    public ResponseEntity<Optional<Pet>> infodetail(@PathVariable Long pet_id) {
+        return ResponseEntity.ok(petService.infodetail(pet_id));
+    }
+
+    @Operation(summary = "", description = "내 유기동물 정보 조회 API")
+    @GetMapping("/mypet")
+    public ResponseEntity<Optional<Pet>> mypet(@PathVariable Long user_id) {
+        return ResponseEntity.ok(petService.mypet(user_id));
     }
 }

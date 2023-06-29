@@ -1,9 +1,7 @@
 package com.hackathon.petvully.controller;
 
 import com.hackathon.petvully.dto.DonationDTO;
-import com.hackathon.petvully.dto.PetDTO;
 import com.hackathon.petvully.dto.UserDTO.LoginDTO;
-import com.hackathon.petvully.entity.User;
 import com.hackathon.petvully.repository.UserRepository;
 import com.hackathon.petvully.service.DonationService;
 import io.swagger.v3.oas.annotations.Operation;
