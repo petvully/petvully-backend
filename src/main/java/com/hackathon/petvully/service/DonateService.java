@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -23,5 +24,10 @@ public class DonateService {
         User user = userRepository.findById(donateSaveDTO.getUserId()).orElseThrow();
         Donate donate = donateRepository.save(donateSaveDTO.toEntity(user));
         return ResponseEntity.ok(donate);
+    }
+
+    public List<Donate> listDonate(Long user_id) {
+        User user = userRepository.findById(user_id).orElseThrow();
+        return donateRepository.findByUserId(user);
     }
 }
