@@ -19,6 +19,13 @@ public class Pet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
+    @Column(nullable = false)
+    private String name;
+
     @Column(nullable = false)
     private String image;
 
@@ -33,15 +40,4 @@ public class Pet {
 
     @Column(nullable = false)
     private String character;
-
-    public PetDTO toDTO() {
-        return PetDTO.builder()
-                .id(this.getId())
-                .image(this.getImage())
-                .shelter(this.getShelter())
-                .kind(this.getKind())
-                .age(this.getAge())
-                .character(this.getCharacter())
-                .build();
-    }
 }

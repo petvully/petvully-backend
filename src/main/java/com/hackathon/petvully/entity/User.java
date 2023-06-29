@@ -31,10 +31,6 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private String nickname;
 
-    @ManyToOne
-    @JoinColumn(name = "pet_id", referencedColumnName = "id")
-    private Pet pet;
-
     @Column(nullable = false)
     private Long level;
 

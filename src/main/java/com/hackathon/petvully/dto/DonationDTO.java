@@ -15,6 +15,7 @@ public class DonationDTO {
     private long petId;
     private String product;
     private long price;
+
     public Donation toEntity() {
         return Donation.builder()
                 .user(userDTO.toEntity())
