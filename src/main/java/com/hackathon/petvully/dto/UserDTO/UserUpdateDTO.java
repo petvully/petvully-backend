@@ -12,9 +12,4 @@ public class UserUpdateDTO {
     private String nickname;
     private Long level;
     private Long heart;
-    private boolean water;
-    private boolean food;
-    private boolean walk;
-    private boolean shower;
-
 }
