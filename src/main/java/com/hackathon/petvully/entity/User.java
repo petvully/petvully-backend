@@ -35,15 +35,19 @@ public class User extends BaseEntity {
     private Long level;
 
     @Column(nullable = false)
+    private Long exp;
+
+    @Column(nullable = false)
     private Long heart;
 
     @Builder
-    public User(String email, String password, String phone, String nickname, Long level, Long heart) {
+    public User(String email, String password, String phone, String nickname, Long level, Long exp, Long heart) {
         this.email = email;
         this.password = cryptopassword(password);
         this.phone = phone;
         this.nickname = nickname;
-        this.level = level;
+        this.level = 1L;
+        this.exp = exp;
         this.heart = heart;
     }
 
@@ -59,6 +63,7 @@ public class User extends BaseEntity {
         this.phone = userUpdateDTO.getPhone();
         this.nickname = userUpdateDTO.getNickname();
         this.level = userUpdateDTO.getLevel();
+        this.exp = userUpdateDTO.getExp();
         this.heart = userUpdateDTO.getHeart();
     }
 

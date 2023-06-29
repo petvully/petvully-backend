@@ -2,6 +2,8 @@ package com.hackathon.petvully.controller;
 
 import com.hackathon.petvully.dto.QuestDTO.QuestGiveDTO;
 import com.hackathon.petvully.entity.Quest;
+import com.hackathon.petvully.entity.User;
+import com.hackathon.petvully.repository.UserRepository;
 import com.hackathon.petvully.service.QuestService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -20,47 +22,54 @@ public class QuestController {
     @Autowired
     private QuestService questService;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @Operation(summary = "", description = "물주기 API")
     @PostMapping("/give-water")
-    public ResponseEntity<String> giveWater(@RequestBody QuestGiveDTO questGiveDTO) {
+    public ResponseEntity<User> giveWater(@RequestBody QuestGiveDTO questGiveDTO) {
+        User user = userRepository.findById(questGiveDTO.getUserId()).orElseThrow();
         if(questService.giveWater(questGiveDTO.getUserId())) {
-            return ResponseEntity.ok("물주기 완료");
+            return ResponseEntity.ok(user);
         }
         else {
-            return ResponseEntity.status(400).body("같은 쿼스트는 하루에 한번만 가능합니다.");
+            return ResponseEntity.status(400).body(user);
         }
     }
 
     @Operation(summary = "", description = "밥주기 API")
     @PostMapping("/give-food")
-    public ResponseEntity<String> giveFood(@RequestBody QuestGiveDTO questGiveDTO) {
+    public ResponseEntity<User> giveFood(@RequestBody QuestGiveDTO questGiveDTO) {
+        User user = userRepository.findById(questGiveDTO.getUserId()).orElseThrow();
         if(questService.giveFood(questGiveDTO.getUserId())) {
-            return ResponseEntity.ok("밥주기 완료");
+            return ResponseEntity.ok(user);
         }
         else {
-            return ResponseEntity.status(400).body("같은 쿼스트는 하루에 한번만 가능합니다.");
+            return ResponseEntity.status(400).body(user);
         }
     }
 
     @Operation(summary = "", description = "산책하기 API")
     @PostMapping("/give-walk")
-    public ResponseEntity<String> giveWalk(@RequestBody QuestGiveDTO questGiveDTO) {
+    public ResponseEntity<User> giveWalk(@RequestBody QuestGiveDTO questGiveDTO) {
+        User user = userRepository.findById(questGiveDTO.getUserId()).orElseThrow();
         if(questService.giveWalk(questGiveDTO.getUserId())) {
-            return ResponseEntity.ok("산책하기 완료");
+            return ResponseEntity.ok(user);
         }
         else {
-            return ResponseEntity.status(400).body("같은 쿼스트는 하루에 한번만 가능합니다.");
+            return ResponseEntity.status(400).body(user);
         }
     }
 
     @Operation(summary = "", description = "씻기기 API")
     @PostMapping("/give-shower")
-    public ResponseEntity<String> giveShower(@RequestBody QuestGiveDTO questGiveDTO) {
+    public ResponseEntity<User> giveShower(@RequestBody QuestGiveDTO questGiveDTO) {
+        User user = userRepository.findById(questGiveDTO.getUserId()).orElseThrow();
         if(questService.giveShower(questGiveDTO.getUserId())) {
-            return ResponseEntity.ok("씻기기 완료");
+            return ResponseEntity.ok(user);
         }
         else {
-            return ResponseEntity.status(400).body("같은 쿼스트는 하루에 한번만 가능합니다.");
+            return ResponseEntity.status(400).body(user);
         }
     }
 

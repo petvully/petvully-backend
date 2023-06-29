@@ -12,6 +12,7 @@ public class SignUpDTO {
     private String phone;
     private String nickname;
     private Long level;
+    private Long exp;
     private Long heart;
 
     public User toEntity() {
@@ -21,6 +22,7 @@ public class SignUpDTO {
                 .phone(phone)
                 .nickname(nickname)
                 .level(level)
+                .exp(exp)
                 .heart(heart)
                 .build();
     }

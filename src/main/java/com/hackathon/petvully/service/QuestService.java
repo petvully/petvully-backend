@@ -23,70 +23,110 @@ public class QuestService {
     LocalDate currentDate = LocalDate.now();
 
     public boolean giveWater(Long userId) {
-        Optional<User> user = userRepository.findById(userId);
+        User user = userRepository.findById(userId).orElseThrow();
         Quest quest = questRepository.findByQuestDate(currentDate);
         if (quest == null) {
             QuestSaveDTO questSaveDTO = new QuestSaveDTO();
-            questRepository.save(questSaveDTO.toEntity(user.orElseThrow()));
+            questRepository.save(questSaveDTO.toEntity(user));
             Quest waterquest = questRepository.findByQuestDate(currentDate);
             waterquest.setWater(true);
+            user.setExp(user.getExp()+10);
+            if (user.getExp() == user.getLevel()*10) {
+                user.setLevel(user.getLevel()+1);
+                user.setExp(0L);
+            }
             return true;
         }
         if (quest.isWater()) {
             return false;
         }
         quest.setWater(true);
+        user.setExp(user.getExp()+10);
+        if (user.getExp() == user.getLevel()*10) {
+            user.setLevel(user.getLevel()+1);
+            user.setExp(0L);
+        }
         return true;
     }
 
     public boolean giveFood(Long userId) {
-        Optional<User> user = userRepository.findById(userId);
+        User user = userRepository.findById(userId).orElseThrow();
         Quest quest = questRepository.findByQuestDate(currentDate);
         if (quest == null) {
             QuestSaveDTO questSaveDTO = new QuestSaveDTO();
-            questRepository.save(questSaveDTO.toEntity(user.orElseThrow()));
+            questRepository.save(questSaveDTO.toEntity(user));
             Quest foodquest = questRepository.findByQuestDate(currentDate);
             foodquest.setFood(true);
+            user.setExp(user.getExp()+10);
+            if (user.getExp() == user.getLevel()*10) {
+                user.setLevel(user.getLevel()+1);
+                user.setExp(0L);
+            }
             return true;
         }
         if (quest.isFood()) {
             return false;
         }
         quest.setFood(true);
+        user.setExp(user.getExp()+10);
+        if (user.getExp() == user.getLevel()*10) {
+            user.setLevel(user.getLevel()+1);
+            user.setExp(0L);
+        }
         return true;
     }
 
     public boolean giveWalk(Long userId) {
-        Optional<User> user = userRepository.findById(userId);
+        User user = userRepository.findById(userId).orElseThrow();
         Quest quest = questRepository.findByQuestDate(currentDate);
         if (quest == null) {
             QuestSaveDTO questSaveDTO = new QuestSaveDTO();
-            questRepository.save(questSaveDTO.toEntity(user.orElseThrow()));
+            questRepository.save(questSaveDTO.toEntity(user));
             Quest walkquest = questRepository.findByQuestDate(currentDate);
             walkquest.setWalk(true);
+            user.setExp(user.getExp()+10);
+            if (user.getExp() == user.getLevel()*10) {
+                user.setLevel(user.getLevel()+1);
+                user.setExp(0L);
+            }
             return true;
         }
         if (quest.isWalk()) {
             return false;
         }
         quest.setWalk(true);
+        user.setExp(user.getExp()+10);
+        if (user.getExp() == user.getLevel()*10) {
+            user.setLevel(user.getLevel()+1);
+            user.setExp(0L);
+        }
         return true;
     }
 
     public boolean giveShower(Long userId) {
-        Optional<User> user = userRepository.findById(userId);
+        User user = userRepository.findById(userId).orElseThrow();
         Quest quest = questRepository.findByQuestDate(currentDate);
         if (quest == null) {
             QuestSaveDTO questSaveDTO = new QuestSaveDTO();
-            questRepository.save(questSaveDTO.toEntity(user.orElseThrow()));
+            questRepository.save(questSaveDTO.toEntity(user));
             Quest showerquest = questRepository.findByQuestDate(currentDate);
             showerquest.setShower(true);
+            user.setExp(user.getExp()+10);
+            if (user.getExp() == user.getLevel()*10) {
+                user.setLevel(user.getLevel()+1);
+                user.setExp(0L);
+            }
             return true;
         }
         if (quest.isShower()) {
             return false;
         }
         quest.setShower(true);
+        user.setExp(user.getExp()+10);
+        if (user.getExp() == user.getLevel()*10) {
+            user.setLevel(user.getLevel()+1);
+            user.setExp(0L);
+        }
         return true;
     }
 
