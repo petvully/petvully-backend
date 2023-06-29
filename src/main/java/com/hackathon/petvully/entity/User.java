@@ -1,5 +1,6 @@
 package com.hackathon.petvully.entity;
 
+import com.hackathon.petvully.dto.UserDTO.UserUpdateDTO;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -66,6 +67,19 @@ public class User extends BaseEntity {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(password);
         return encodedPassword;
+    }
+
+    public void update(UserUpdateDTO userUpdateDTO) {
+        this.email = userUpdateDTO.getEmail();
+        this.password = cryptopassword(userUpdateDTO.getPassword());
+        this.phone = userUpdateDTO.getPhone();
+        this.nickname = userUpdateDTO.getNickname();
+        this.level = userUpdateDTO.getLevel();
+        this.heart = userUpdateDTO.getHeart();
+        this.water = userUpdateDTO.isWater();
+        this.food = userUpdateDTO.isFood();
+        this.walk = userUpdateDTO.isWalk();
+        this.shower = userUpdateDTO.isShower();
     }
 
 }
