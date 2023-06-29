@@ -1,7 +1,6 @@
 package com.hackathon.petvully.controller;
 
 import com.hackathon.petvully.dto.QuestDTO.QuestGiveDTO;
-import com.hackathon.petvully.dto.UserDTO.SignUpDTO;
 import com.hackathon.petvully.service.QuestService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -22,13 +21,21 @@ public class QuestController {
     @PostMapping("/give-water")
     public ResponseEntity<String> giveWater(@RequestBody QuestGiveDTO questGiveDTO) {
         if(questService.giveWater(questGiveDTO.getUserId())) {
-
             return ResponseEntity.ok("물주기 완료");
         }
         else {
             return ResponseEntity.status(400).body("동물에게 관심을 주세요");
         }
-
     }
 
+    @Operation(summary = "", description = "밥주기 API")
+    @PostMapping("/give-food")
+    public ResponseEntity<String> giveFood(@RequestBody QuestGiveDTO questGiveDTO) {
+        if(questService.giveFood(questGiveDTO.getUserId())) {
+            return ResponseEntity.ok("밥주기 완료");
+        }
+        else {
+            return ResponseEntity.status(400).body("동물에게 관심을 주세요");
+        }
+    }
 }

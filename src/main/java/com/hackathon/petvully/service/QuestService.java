@@ -1,8 +1,6 @@
 package com.hackathon.petvully.service;
 
-import com.hackathon.petvully.dto.QuestDTO.QuestGiveDTO;
 import com.hackathon.petvully.dto.QuestDTO.QuestSaveDTO;
-import com.hackathon.petvully.dto.UserDTO.SignUpDTO;
 import com.hackathon.petvully.entity.Quest;
 import com.hackathon.petvully.entity.User;
 import com.hackathon.petvully.repository.QuestRepository;
@@ -32,6 +30,21 @@ public class QuestService {
         }
         Quest waterquest = questRepository.findByUserId(user);
         waterquest.setWater(true);
+        return true;
+    }
+
+    public boolean giveFood(Long userId) {
+        Optional<User> user = userRepository.findById(userId);
+        Quest quest = questRepository.findByUserId(user);
+        if (quest == null) {
+            QuestSaveDTO questSaveDTO = new QuestSaveDTO();
+            questRepository.save(questSaveDTO.toEntity(user.orElseThrow()));
+            Quest foodquest = questRepository.findByUserId(user);
+            foodquest.setFood(true);
+            return true;
+        }
+        Quest foodquest = questRepository.findByUserId(user);
+        foodquest.setFood(true);
         return true;
     }
 }
