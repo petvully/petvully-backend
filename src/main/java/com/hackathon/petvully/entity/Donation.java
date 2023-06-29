@@ -17,20 +17,20 @@ import javax.persistence.*;
 public class Donation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(nullable = false)
     private String product;
 
     @Column(nullable = false)
-    private long price;
+    private Long price;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
     @Column(nullable = false)
-    private long petId;
+    private Long petId;
 
     public DonationDTO toDTO() {
         return DonationDTO.builder()
