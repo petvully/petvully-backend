@@ -19,7 +19,7 @@ public class PetDTO {
     private String shelter;
     private String kind;
     private long age;
-    private String character;
+    private String feature;
 
     public Pet toEntity(User user) {
         return Pet.builder()
@@ -29,7 +29,7 @@ public class PetDTO {
                 .shelter(this.shelter)
                 .kind(this.kind)
                 .age(this.age)
-                .character(this.character)
+                .feature(this.feature)
                 .build();
     }
 }
