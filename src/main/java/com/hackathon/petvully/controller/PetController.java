@@ -42,8 +42,8 @@ public class PetController {
     }
 
     @Operation(summary = "", description = "내 유기동물 정보 조회 API")
-    @GetMapping("/mypet")
-    public ResponseEntity<Optional<Pet>> mypet(@PathVariable Long user_id) {
+    @GetMapping("/mypet/{user_id}")
+    public ResponseEntity<Pet> mypet(@PathVariable Long user_id) {
         return ResponseEntity.ok(petService.mypet(user_id));
     }
 }

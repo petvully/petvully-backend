@@ -38,7 +38,8 @@ public class PetService {
         return petRepository.findById(pet_id);
     }
 
-    public Optional<Pet> mypet(Long user_id) {
-        return petRepository.findByUserId(user_id);
+    public Pet mypet(Long user_id) {
+        User user = userRepository.findById(user_id).orElseThrow();
+        return petRepository.findByUserId(user);
     }
 }
