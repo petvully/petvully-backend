@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
@@ -36,8 +36,8 @@ public class Pet {
     private String kind;
 
     @Column(nullable = false)
-    private long age;
+    private Long age;
 
     @Column(nullable = false)
-    private String character;
+    private String feature;
 }
