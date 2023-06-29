@@ -11,5 +11,6 @@ public class UserUpdateDTO {
     private String phone;
     private String nickname;
     private Long level;
+    private Long exp;
     private Long heart;
 }
