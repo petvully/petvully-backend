@@ -22,6 +22,7 @@ public class PetSaveDTO {
     private String feature;
     private String region;
     private String gender;
+    private Long number;
 
     public Pet toEntity(User userId) {
         return Pet.builder()
@@ -35,6 +36,7 @@ public class PetSaveDTO {
                 .feature(feature)
                 .region(region)
                 .gender(gender)
+                .number(number)
                 .build();
     }
 }
