@@ -49,8 +49,12 @@ public class Pet {
     @Column(nullable = false)
     private String gender;
 
+    @Column(nullable = false)
+    private Long number;
+
+
     @Builder
-    public Pet(User userId, String name, String image, String kind, String color, Long age, Long weight, String feature, String region, String gender) {
+    public Pet(User userId, String name, String image, String kind, String color, Long age, Long weight, String feature, String region, String gender, Long number) {
         this.userId = userId;
         this.name = name;
         this.image = image;
@@ -61,5 +65,6 @@ public class Pet {
         this.feature = feature;
         this.region = region;
         this.gender = gender;
+        this.number = number;
     }
 }
